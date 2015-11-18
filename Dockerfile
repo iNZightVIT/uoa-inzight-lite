@@ -2,14 +2,9 @@ FROM scienceis/uoa-inzight-base:latest
 
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
-# Clean up APT when done.
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+## Install (via R) all of the necessary packages (R will automatially install dependencies):
+RUN R -e "install.packages(c('iNZightMR', 'iNZightTS', 'iNZightRegression', 'iNZightPlots'), \
+                           repos = c('http://docker.stat.auckland.ac.nz/R', 'http://cran.stat.auckland.ac.nz'))"
 
-# copy shiny-server startup script
-COPY shiny-server.sh /usr/bin/shiny-server.sh
-
-# make it executable
-RUN chmod +x /usr/bin/shiny-server.sh
-
-# startup process
-CMD ["/usr/bin/shiny-server.sh"]
+## startup the shiny-server:
+CMD ["sudo", "-u", "shiny", "/usr/bin/shiny-server"]
