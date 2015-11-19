@@ -3,13 +3,12 @@ FROM scienceis/uoa-inzight-base:latest
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
 # install R packages specific to iNZight Lite
-RUN apt-get update \
+RUN R -e "update.packages(repos = 'http://docker.stat.auckland.ac.nz/R')" \
   && rm -rf /srv/shiny-server/* \
   && wget -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
   && unzip Lite.zip \
   && cp -R Lite/* /srv/shiny-server \
-  && rm -rf Lite/ \
-  && apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  && rm -rf Lite/
 
 # copy shiny-server startup script
 COPY shiny-server.sh /usr/bin/shiny-server.sh
