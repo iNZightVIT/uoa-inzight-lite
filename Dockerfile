@@ -16,7 +16,7 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 ENV LAST_BUILD_DATE "Fri 11 03 01:10:00 NZDT 2017"
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
-RUN R -e "install.packages('hextri', repos = 'https://cran.r-project.org', type = 'source'); install.packages('countrycode', repos = 'https://cran.r-project.org', type = 'source'); install.packages('RgoogleMaps', repos = 'https://cran.r-project.org', dependencies = TRUE, type = 'source'); install.packages('iNZightMaps', repos = 'http://r.docker.stat.auckland.ac.nz/R/', type = 'source'); update.packages(repos = 'http://r.docker.stat.auckland.ac.nz/R/', ask = FALSE)" \
+RUN R -e "install.packages('hextri', repos = 'https://cran.r-project.org', type = 'source'); install.packages('countrycode', repos = 'https://cran.r-project.org', type = 'source'); install.packages('RgoogleMaps', repos = 'https://cran.r-project.org', dependencies = TRUE, type = 'source'); install.packages('iNZightMaps', repos = 'http://r.docker.stat.auckland.ac.nz/R/'); update.packages(repos = 'http://r.docker.stat.auckland.ac.nz/R/', ask = FALSE)" \
   && rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
   && unzip Lite.zip \
