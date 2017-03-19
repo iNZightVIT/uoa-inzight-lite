@@ -13,7 +13,7 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 # Since we fetch the latest changes from the associated Application~s master branch
 # this helps trigger date based build
 # The other option would be to tag git builds and refer to the latest tag
-ENV LAST_BUILD_DATE "Mon 13 03 00:55:00 NZDT 2017"
+ENV LAST_BUILD_DATE "Mon 19 03 00:55:00 NZDT 2017"
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
 RUN R -e "update.packages(oldPkgs = 'shiny', repos = 'https://cran.r-project.org', ask = FALSE); install.packages('hextri', repos = 'https://cran.r-project.org', type = 'source'); install.packages('RgoogleMaps', repos = 'https://cran.r-project.org', dependencies = TRUE); install.packages('countrycode', repos = 'https://cran.r-project.org'); update.packages(repos = 'http://r.docker.stat.auckland.ac.nz/R/', ask = FALSE); install.packages('iNZightMaps', repos = 'http://r.docker.stat.auckland.ac.nz/R/')" \
