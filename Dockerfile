@@ -17,7 +17,8 @@ ENV LAST_BUILD_DATE "Mon 26 03 00:55:00 NZDT 2017"
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
 RUN apt-get update \
-  && apt-get install libxml2-dev \
+  && apt-get install -y -q \
+                     libxml2-dev \
   && R -e "update.packages(oldPkgs = 'shiny', repos = 'https://cran.r-project.org', ask = FALSE); install.packages('hextri', repos = 'https://cran.r-project.org', type = 'source'); install.packages('gridSVG', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE);  install.packages('RgoogleMaps', repos = 'https://cran.r-project.org', dependencies = TRUE); install.packages('countrycode', repos = 'https://cran.r-project.org'); update.packages(repos = 'http://r.docker.stat.auckland.ac.nz/R/', ask = FALSE); install.packages('iNZightMaps', repos = 'http://r.docker.stat.auckland.ac.nz/R/')" \
   && rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
