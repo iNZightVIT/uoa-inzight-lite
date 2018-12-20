@@ -5,7 +5,7 @@
 # repository and installs the shiny app for Lite
 #
 # ----------------------------------------
-FROM scienceis/uoa-inzight-lite-base:play
+FROM scienceis/uoa-inzight-lite-base:shengwei20181220
 
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
