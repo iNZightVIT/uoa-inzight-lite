@@ -20,7 +20,7 @@ RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 381BA480 \
     && echo "deb http://deb.debian.org/debian stretch main" | sudo tee -a /etc/apt/sources.list \
     && apt-get update -y -q \
     
-    && R -e "install.packages('sf', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE); devtools::install_github('daniel-barnett/ggsfextra') \
+    && R -e "install.packages('sf', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE); devtools::install_github('daniel-barnett/ggsfextra')" \
    
   && rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
