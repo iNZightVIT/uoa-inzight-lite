@@ -19,12 +19,7 @@ ENV LAST_BUILD_DATE "Sun 24 08 21:45:00 NZDT 2018"
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 381BA480 \
     && echo "deb http://deb.debian.org/debian stretch main" | sudo tee -a /etc/apt/sources.list \
     && apt-get update -y -q \
-    
-  && R -e "install.packages('readxl', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
-  && R -e "devtools::install_github('dkahle/ggmap')" \
-  && R -e "install.packages('https://r.docker.stat.auckland.ac.nz/src/contrib/iNZightMaps_2.1.1.tar.gz', repos = NULL, type = 'source', dependencies = TRUE)" \
-  && R -e "install.packages('https://r.docker.stat.auckland.ac.nz/src/contrib/iNZightPlots_2.7.12.tar.gz', repos = NULL, type = 'source', dependencies = TRUE)" \
-  
+   
   && rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
   && unzip Lite.zip \
