@@ -5,7 +5,7 @@
 # repository and installs the shiny app for Lite
 #
 # ----------------------------------------
-FROM scienceis/uoa-inzight-lite-base:shengwei20181220
+FROM scienceis/uoa-inzight-lite-base:play
 
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
@@ -16,12 +16,7 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 ENV LAST_BUILD_DATE "Sun 24 08 21:45:00 NZDT 2018"
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
-RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 381BA480 \
-    && echo "deb http://deb.debian.org/debian stretch main" | sudo tee -a /etc/apt/sources.list \
-    && apt-get update -y -q \
-    
-   
-  && rm -rf /srv/shiny-server/* \
+RUN rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
   && unzip Lite.zip \
   && cp -R Lite-master/* /srv/shiny-server \
