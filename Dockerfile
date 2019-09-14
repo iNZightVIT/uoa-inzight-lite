@@ -20,6 +20,7 @@ RUN R -e "install.packages('ggmosaic', repos = 'https://cran.r-project.org', typ
 && R -e "install.packages('ggridges', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
 && R -e "install.packages('waffle', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
 && R -e "install.packages('plotly', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
+&& R -e "install.packages('https://r.docker.stat.auckland.ac.nz/src/contrib/iNZightTools_1.7.4.tar.gz', repos = NULL, type = 'source', dependencies = TRUE)" \
 && R -e "install.packages('https://r.docker.stat.auckland.ac.nz/src/contrib/iNZightPlots_2.10.2.tar.gz', repos = NULL, type = 'source', dependencies = TRUE)" \
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
