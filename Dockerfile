@@ -16,7 +16,7 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 ENV LAST_BUILD_DATE "Thu 13 06 21:45:00 NZDT 2019"
 
 RUN R -e "install.packages('ggmosaic', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
-&& R -e "install.packages('ggbeewarm', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
+&& R -e "install.packages('ggbeeswarm', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
 && R -e "install.packages('ggridges', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
 && R -e "install.packages('waffle', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
 && R -e "install.packages('plotly', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
