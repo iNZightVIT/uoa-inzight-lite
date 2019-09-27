@@ -5,7 +5,7 @@
 # repository and installs the shiny app for Lite
 #
 # ----------------------------------------
-FROM scienceis/uoa-inzight-lite-base:play
+FROM scienceis/uoa-inzight-lite-base:latest
 
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
@@ -13,15 +13,8 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 # Since we fetch the latest changes from the associated Application~s master branch
 # this helps trigger date based build
 # The other option would be to tag git builds and refer to the latest tag
-ENV LAST_BUILD_DATE "Thu 13 06 21:45:00 NZDT 2019"
+ENV LAST_BUILD_DATE "Thu 21 09 21:45:00 NZDT 2019"
 
-RUN R -e "install.packages('ggmosaic', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
-&& R -e "install.packages('ggbeeswarm', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
-&& R -e "install.packages('ggridges', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
-&& R -e "install.packages('waffle', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
-&& R -e "install.packages('plotly', repos = 'https://cran.r-project.org', type = 'source', dependencies = TRUE)" \
-&& R -e "install.packages('https://r.docker.stat.auckland.ac.nz/src/contrib/iNZightTools_1.7.4.tar.gz', repos = NULL, type = 'source', dependencies = TRUE)" \
-&& R -e "install.packages('https://r.docker.stat.auckland.ac.nz/src/contrib/iNZightPlots_2.10.2.tar.gz', repos = NULL, type = 'source', dependencies = TRUE)" \
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
 RUN rm -rf /srv/shiny-server/* \
