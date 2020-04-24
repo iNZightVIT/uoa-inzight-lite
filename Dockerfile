@@ -5,8 +5,7 @@
 # repository and installs the shiny app for Lite
 #
 # ----------------------------------------
-FROM scienceis/uoa-inzight-lite-base:latest
-
+FROM scienceis/uoa-inzight-lite-base:play
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
 # Edit the following environment variable, commit to Github and it will trigger Docker build
