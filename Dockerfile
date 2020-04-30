@@ -21,7 +21,7 @@ RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-1
   && dpkg -i shiny-server.deb \ 
   && rm -f shiny-server.deb \
   && apt-get clean \
-  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
   && unzip Lite.zip \
