@@ -18,11 +18,10 @@ ENV LAST_BUILD_DATE "Thu 30 04 21:45:00 NZDT 2020"
 
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
 RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.13.944-amd64.deb \
-&& dpkg -i shiny-server.deb \
-&& chmod +x /opt/shiny-server.sh \
-&& rm -f shiny-server.deb \
-&& apt-get clean \
-&& rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+  && dpkg -i shiny-server.deb \ 
+  && rm -f shiny-server.deb \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
   && rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
   && unzip Lite.zip \
