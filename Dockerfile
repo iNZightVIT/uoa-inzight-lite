@@ -25,9 +25,7 @@ RUN rm -rf /srv/shiny-server/* \
   && rm -rf Lite.zip Lite-master/ \
   && rm -rf /tmp/* /var/tmp/*
 
-RUN mkdir -p /var/lib/shiny-server/bookmarks && \
-  chown shiny:0 /var/lib/shiny-server/bookmarks && \
-  chmod g+wrX /var/lib/shiny-server/bookmarks && \
+RUN chown shiny:shiny var/lib/shiny-server
   
 # start shiny server process - it listens to port 3838
 CMD ["/opt/shiny-server.sh"]
