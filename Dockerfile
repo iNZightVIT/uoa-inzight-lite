@@ -26,9 +26,9 @@ RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-1
   && rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/bugfix/R4.zip \
   && unzip Lite.zip \
-  && cp -R Lite-master/* /srv/shiny-server \
+  && cp -R Lite-bugfix-R4/* /srv/shiny-server \
   && echo $LAST_BUILD_DATE > /srv/shiny-server/build.txt \
-  && rm -rf Lite.zip Lite-master/ \
+  && rm -rf Lite.zip Lite-bugfix-R4/ \
   && rm -rf /tmp/* /var/tmp/*
 
 RUN chown shiny:shiny /var/lib/shiny-server
