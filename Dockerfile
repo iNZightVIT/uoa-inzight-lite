@@ -5,7 +5,7 @@
 # repository and installs the shiny app for Lite
 #
 # ----------------------------------------
-FROM scienceis/uoa-inzight-lite-base:dev
+FROM scienceis/uoa-inzight-lite-base:shengwei20181220
 
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
@@ -24,7 +24,7 @@ RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-1
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && rm -rf /srv/shiny-server/* \
-  && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
+  && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/bugfix/R4.zip \
   && unzip Lite.zip \
   && cp -R Lite-master/* /srv/shiny-server \
   && echo $LAST_BUILD_DATE > /srv/shiny-server/build.txt \
