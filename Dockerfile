@@ -5,18 +5,25 @@
 # repository and installs the shiny app for Lite
 #
 # ----------------------------------------
-FROM scienceis/uoa-inzight-lite-base:latest
+FROM scienceis/uoa-inzight-lite-base:shengwei20181220
+
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
 # Edit the following environment variable, commit to Github and it will trigger Docker build
 # Since we fetch the latest changes from the associated Application~s master branch
 # this helps trigger date based build
 # The other option would be to tag git builds and refer to the latest tag
-ENV LAST_BUILD_DATE "Mon 22 06 22:25:00 NZDT 2020"
+ENV LAST_BUILD_DATE "Sat 08 08 21:45:00 NZDT 2020"
 
-
+COPY shiny-server.sh /usr/bin/shiny-server.sh
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
-RUN rm -rf /srv/shiny-server/* \
+RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.13.944-amd64.deb \
+  && dpkg -i shiny-server.deb \
+  && chmod +x /usr/bin/shiny-server.sh \
+  && rm -f shiny-server.deb \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
+  && rm -rf /srv/shiny-server/* \
   && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
   && unzip Lite.zip \
   && cp -R Lite-master/* /srv/shiny-server \
@@ -24,5 +31,10 @@ RUN rm -rf /srv/shiny-server/* \
   && rm -rf Lite.zip Lite-master/ \
   && rm -rf /tmp/* /var/tmp/*
 
-# start shiny server process - it listens to port 3838
-CMD ["/opt/shiny-server.sh"]
+RUN chown shiny:shiny /var/lib/shiny-server
+
+EXPOSE 3838
+
+
+
+CMD ["/usr/bin/shiny-server.sh"]
