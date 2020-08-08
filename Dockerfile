@@ -13,7 +13,7 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 # Since we fetch the latest changes from the associated Application~s master branch
 # this helps trigger date based build
 # The other option would be to tag git builds and refer to the latest tag
-ENV LAST_BUILD_DATE "Thu 30 04 21:45:00 NZDT 2020"
+ENV LAST_BUILD_DATE "Sat 08 08 21:45:00 NZDT 2020"
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
@@ -24,11 +24,11 @@ RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-1
   && apt-get clean \
   && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/* \
   && rm -rf /srv/shiny-server/* \
-  && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/bugfix/R4.zip \
+  && wget --no-verbose -O Lite.zip https://github.com/iNZightVIT/Lite/archive/master.zip \
   && unzip Lite.zip \
-  && cp -R Lite-bugfix-R4/* /srv/shiny-server \
+  && cp -R Lite-master/* /srv/shiny-server \
   && echo $LAST_BUILD_DATE > /srv/shiny-server/build.txt \
-  && rm -rf Lite.zip Lite-bugfix-R4/ \
+  && rm -rf Lite.zip Lite-master/ \
   && rm -rf /tmp/* /var/tmp/*
 
 RUN chown shiny:shiny /var/lib/shiny-server
