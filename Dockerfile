@@ -5,7 +5,7 @@
 # repository and installs the shiny app for Lite
 #
 # ----------------------------------------
-FROM scienceis/uoa-inzight-lite-base:shengwei20181220
+FROM scienceis/uoa-inzight-lite-base:dev
 
 MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 
@@ -13,7 +13,7 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 # Since we fetch the latest changes from the associated Application~s master branch
 # this helps trigger date based build
 # The other option would be to tag git builds and refer to the latest tag
-ENV LAST_BUILD_DATE "Thu 30 04 21:45:00 NZDT 2020"
+ENV LAST_BUILD_DATE "FRI 04 12 21:45:00 NZDT 2020"
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
