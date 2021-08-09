@@ -13,7 +13,7 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 # Since we fetch the latest changes from the associated Application~s master branch
 # this helps trigger date based build
 # The other option would be to tag git builds and refer to the latest tag
-ENV LAST_BUILD_DATE "Fri 12 02 21:45:00 NZDT 2021"
+ENV LAST_BUILD_DATE "Mon 09 08 23:45:00 NZDT 2021"
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
