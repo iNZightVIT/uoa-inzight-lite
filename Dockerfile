@@ -1,7 +1,7 @@
 # ----------------------------------------
 #
-# This image inherits uoa-inzight-lite-base image, 
-# updates packages from docker.stat.auckland.ac.nz 
+# This image inherits uoa-inzight-lite-base image,
+# updates packages from docker.stat.auckland.ac.nz
 # repository and installs the shiny app for Lite
 #
 # ----------------------------------------
@@ -30,6 +30,10 @@ RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-1
   && echo $LAST_BUILD_DATE > /srv/shiny-server/build.txt \
   && rm -rf Lite.zip Lite-master/ \
   && rm -rf /tmp/* /var/tmp/*
+
+# set up VARS file
+RUN cp /srv/shiny-server/VARS.default /srv/shiny-server/VARS \
+  && sed -i "s/^\(lite.update=\).*/\1$(date '+%d %B %Y')/g" /srv/shiny-server/VARS
 
 RUN chown shiny:shiny /var/lib/shiny-server
 
