@@ -14,9 +14,10 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 # this helps trigger date based build
 # The other option would be to tag git builds and refer to the latest tag
 ENV LAST_BUILD_DATE "Mon 09 09 23:45:00 NZDT 2021"
-ENV APPLICATION_LOGS_TO_STDOUT "true"
+#ENV APPLICATION_LOGS_TO_STDOUT "true"
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
+COPY shiny-server-log.config /etc/shiny-server/shiny-server.conf
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
 RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.13.944-amd64.deb \
   && dpkg -i shiny-server.deb \
@@ -35,6 +36,9 @@ RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-1
 # set up VARS file
 RUN cp /srv/shiny-server/VARS.default /srv/shiny-server/VARS \
   && sed -i "s/^\(lite.update=\).*/\1$(date '+%d %B %Y')/g" /srv/shiny-server/VARS
+
+
+
 
 RUN chown shiny:shiny /var/lib/shiny-server
 
