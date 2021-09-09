@@ -14,7 +14,7 @@ MAINTAINER "Science IS Team" ws@sit.auckland.ac.nz
 # this helps trigger date based build
 # The other option would be to tag git builds and refer to the latest tag
 ENV LAST_BUILD_DATE "Mon 09 09 23:45:00 NZDT 2021"
-#ENV APPLICATION_LOGS_TO_STDOUT "true"
+ENV APPLICATION_LOGS_TO_STDOUT "true"
 
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 COPY shiny-server-log.config /etc/shiny-server/shiny-server.conf
