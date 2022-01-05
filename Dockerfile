@@ -19,7 +19,7 @@ ENV APPLICATION_LOGS_TO_STDOUT "true"
 COPY shiny-server.sh /usr/bin/shiny-server.sh
 COPY shiny-server-log.config /etc/shiny-server/shiny-server.conf
 # Install (via R) all of the necessary packages (R will automatially install dependencies):
-RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.13.944-amd64.deb \
+RUN wget --no-verbose -O shiny-server.deb https://download3.rstudio.org/ubuntu-14.04/x86_64/shiny-server-1.5.17.973-amd64.deb \
   && dpkg -i shiny-server.deb \
   && chmod +x /usr/bin/shiny-server.sh \
   && rm -f shiny-server.deb \
